@@ -17,6 +17,8 @@ public class HengerProgram {
         for (MertaniHenger henger : this.lista()) {
             System.out.println(henger.toString());
         }
+
+        System.out.print("Átlagtérfogat:\n" + this.atlagTerfogat());
     }
 
     public HengerProgram() {
@@ -37,7 +39,7 @@ public class HengerProgram {
 
     public double atlagTerfogat() {
         double terfogatok = 0;
-        
+
         for (MertaniHenger henger : this.lista()) {
             terfogatok += henger.terfogat();
         }
@@ -47,7 +49,7 @@ public class HengerProgram {
     public double csovekSulya() {
 
         for (MertaniHenger henger : this.lista()) {
-            
+
         }
         return 0;
     }
