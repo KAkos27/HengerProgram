@@ -12,19 +12,23 @@ public class HengerProgram {
     }
 
     public void run() {
-        MertaniHenger m = new MertaniHenger(1, 1);
-        TomorHenger t = new TomorHenger(1, 1);
-        LyukasHenger ly = new LyukasHenger(1, 1, 0.5);
-
         System.out.printf("hengerek (%d db):\n", MertaniHenger.getHengerDarab());
 
-        System.out.println(m.toString());
-        System.out.println(t.toString());
-        System.out.println(ly.toString());
+        for (MertaniHenger henger : this.lista()) {
+            System.out.println(henger.toString());
+        }
     }
 
     public HengerProgram() {
         this(new ArrayList<>());
+        hengerek = new ArrayList<>();
+
+        hengerek.add(new MertaniHenger(1, 1));
+        hengerek.add(new TomorHenger(1, 1));
+        hengerek.add(new TomorHenger(1, 1, 0.5));
+        hengerek.add(new LyukasHenger(1, 1, 0.1));
+        hengerek.add(new LyukasHenger(1, 1, 0.5));
+        hengerek.add(new LyukasHenger(1, 1, 0.9));
     }
 
     public HengerProgram(List<MertaniHenger> hengerek) {
@@ -32,15 +36,24 @@ public class HengerProgram {
     }
 
     public double atlagTerfogat() {
-        return 0;
+        double terfogatok = 0;
+        
+        for (MertaniHenger henger : this.lista()) {
+            terfogatok += henger.terfogat();
+        }
+        return terfogatok / MertaniHenger.getHengerDarab();
     }
 
     public double csovekSulya() {
+
+        for (MertaniHenger henger : this.lista()) {
+            
+        }
         return 0;
     }
 
     private List<MertaniHenger> lista() {
-        return new ArrayList<>();
+        return hengerek;
     }
 
 }
