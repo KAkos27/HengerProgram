@@ -1,4 +1,4 @@
-package modell;
+package hu.szamalk;
 
 public class LyukasHenger extends TomorHenger {
 
