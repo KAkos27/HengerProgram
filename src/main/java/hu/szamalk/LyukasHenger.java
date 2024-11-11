@@ -2,7 +2,7 @@ package hu.szamalk;
 
 public class LyukasHenger extends TomorHenger {
 
-    private double falvastagsag;
+    private final double falvastagsag;
 
     public LyukasHenger(double sugar, double magassag, double falvastagsag) {
         this(sugar, magassag, 1, falvastagsag);
@@ -15,7 +15,15 @@ public class LyukasHenger extends TomorHenger {
 
     @Override
     public double terfogat() {
-        return 0;
+        double r = this.getSugar() - this.falvastagsag;
+        MertaniHenger belso = new MertaniHenger(r, this.getMagassag());
+
+        return super.terfogat() - belso.terfogat();
+    }
+
+    @Override
+    public double suly() {
+        return this.terfogat() * this.getFajsuly();
     }
 
     @Override

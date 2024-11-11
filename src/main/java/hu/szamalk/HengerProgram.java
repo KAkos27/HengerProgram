@@ -5,7 +5,7 @@ import java.util.List;
 
 public class HengerProgram {
 
-    private List<MertaniHenger> hengerek;
+    private final List<MertaniHenger> hengerek;
 
     public static void main(String[] args) {
         new HengerProgram().run();
@@ -18,12 +18,12 @@ public class HengerProgram {
             System.out.println(henger.toString());
         }
 
-        System.out.print("Átlagtérfogat:\n" + this.atlagTerfogat());
+        System.out.println("Átlagtérfogat: " + this.atlagTerfogat());
+        System.out.println("Csövek súlya: " + this.csovekSulya());
     }
 
     public HengerProgram() {
         this(new ArrayList<>());
-        hengerek = new ArrayList<>();
 
         hengerek.add(new MertaniHenger(1, 1));
         hengerek.add(new TomorHenger(1, 1));
@@ -31,6 +31,7 @@ public class HengerProgram {
         hengerek.add(new LyukasHenger(1, 1, 0.1));
         hengerek.add(new LyukasHenger(1, 1, 0.5));
         hengerek.add(new LyukasHenger(1, 1, 0.9));
+        hengerek.add(new LyukasHenger(1, 1, 1));
     }
 
     public HengerProgram(List<MertaniHenger> hengerek) {
@@ -47,11 +48,14 @@ public class HengerProgram {
     }
 
     public double csovekSulya() {
+        double ossz = 0;
 
         for (MertaniHenger henger : this.lista()) {
-
+            if (henger instanceof LyukasHenger) {
+                ossz += ((LyukasHenger) henger).suly();
+            }
         }
-        return 0;
+        return ossz;
     }
 
     private List<MertaniHenger> lista() {
